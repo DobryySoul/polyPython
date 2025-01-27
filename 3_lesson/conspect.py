@@ -265,7 +265,6 @@ import pandas as pd
 
 # print(df - df.iloc[0])
 
-
 # print(df - df.iloc[0])
 
 # print(df.iloc[0, ::2])
