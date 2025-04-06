@@ -134,42 +134,42 @@ data = np.array(
 x = data[:, 0]
 y = data[:, 1]
 
-# n = len(x)
+n = len(x)
 
-# w1 = 0.0
-# w0 = 0.0
+w1 = 0.0
+w0 = 0.0
 
-# L = 0.001
+L = 0.001
 
-# iterations = 100_000
-# for i in range(iterations):
-#     D_w0 = 2 * sum(y[i] - w0 - w1 * x[i] for i in range(n))
-#     D_w1 = 2 * sum(x[i] * (-y[i] - w0 - w1 * x[i]) for i in range(n))
-#     w1 -= L * D_w1
-#     w0 -= L * D_w0
+iterations = 100_000
+for i in range(iterations):
+    D_w0 = 2 * sum(-y[i] + w0 + w1 * x[i] for i in range(n))
+    D_w1 = 2 * sum(x[i] * (-y[i] + w0 + w1 * x[i]) for i in range(n))
+    w1 -= L * D_w1
+    w0 -= L * D_w0
 
-# print(w1, w0)
+print(w1, w0)
 
-w1 = np.linspace(-10, 10, 100)
-w0 = np.linspace(-10, 10, 100)
+# w1 = np.linspace(-10, 10, 100)
+# w0 = np.linspace(-10, 10, 100)
 
-def E(w1, w0, x, y):
-    return sum((y[i] - w0 - w1 * x[i]) ** 2 for i in range(len(x)))
+# def E(w1, w0, x, y):
+#     return sum((y[i] - w0 - w1 * x[i]) ** 2 for i in range(len(x)))
 
-w1, w0 = np.meshgrid(w1, w0)
-EW = E(w1, w0, x, y)
+# w1, w0 = np.meshgrid(w1, w0)
+# EW = E(w1, w0, x, y)
 
-fig = plt.figure()
+# fig = plt.figure()
 
-ax = plt.axes(projection='3d')
+# ax = plt.axes(projection='3d')
 
-ax.plot_surface(w1, w0, EW)
+# ax.plot_surface(w1, w0, EW)
 
-w1_fit = 2.4
-w0_fit = 0.8
+# w1_fit = 2.4
+# w0_fit = 0.8
 
-E_fit = E(w1_fit, w0_fit, x, y)
+# E_fit = E(w1_fit, w0_fit, x, y)
 
-ax.scatter(w1_fit, w0_fit, E_fit, color='r')
+# ax.scatter(w1_fit, w0_fit, E_fit, color='r')
 
-plt.show()
+# plt.show()
